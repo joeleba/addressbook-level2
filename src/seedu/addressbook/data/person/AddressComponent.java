@@ -22,4 +22,8 @@ public class AddressComponent {
         this.value = newDetails;
     }
 
+    @Override
+    public String toString() {
+        return value;
+    }
 }

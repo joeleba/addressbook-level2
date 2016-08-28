@@ -12,6 +12,7 @@ public class Address {
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses can be in any format";
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
     public static final int ADDRESS_COMPONENTS = 4;
+    public static final String DELIMITER = ", ";
 
     private boolean isPrivate;
 
@@ -36,7 +37,6 @@ public class Address {
         this.street = new Street(parsedAddress[1]);
         this.unit = new Unit(parsedAddress[2]);
         this.postalCode = new PostalCode(parsedAddress[3]);
-        
     }
 
     /**
@@ -47,11 +47,19 @@ public class Address {
     }
     
     public static String[] parseAddress(String address) {
-        return address.split(", ", ADDRESS_COMPONENTS);
+        return address.split(DELIMITER, ADDRESS_COMPONENTS);
     }
 
     @Override
     public String toString() {
+        String[] components = new String[ADDRESS_COMPONENTS];
+        
+        components[0] = this.block.toString();
+        components[1] = this.street.toString();
+        components[2] = this.unit.toString();
+        components[3] = this.postalCode.toString();
+        
+        return String.join(DELIMITER, components);
     }
 
     @Override
