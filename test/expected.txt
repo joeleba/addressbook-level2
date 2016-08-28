@@ -90,6 +90,9 @@
 || Enter command: || [Command entered:  add Valid Name p/12345 e/valid@e.mail a/valid, address t/invalid_-[.tag]
 || Tags names should be alphanumeric
 || ===================================================
+|| Enter command: || [Command entered:  add Valid Name p/12345 e/valid@e.mail a/invalid, address]
+|| Person addresses must be of the following format: BLOCK, STREET, UNIT, POSTAL_CODE
+|| ===================================================
 || Enter command: || [Command entered:  add Adam Brown p/111111 e/adam@gmail.com a/111, alpha street, #12-34, 231534]
 || New person added: Adam Brown Phone: 111111 Email: adam@gmail.com Address: 111, alpha street, #12-34, 231534 Tags: 
 || ===================================================
