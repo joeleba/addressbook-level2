@@ -13,7 +13,6 @@ public class Address {
     public static final String ADDRESS_VALIDATION_REGEX = ".+";
     public static final int ADDRESS_COMPONENTS = 4;
 
-    public final String value;
     private boolean isPrivate;
 
     private final Block block;
@@ -38,7 +37,6 @@ public class Address {
         this.unit = new Unit(parsedAddress[2]);
         this.postalCode = new PostalCode(parsedAddress[3]);
         
-        this.value = address;
     }
 
     /**
@@ -54,7 +52,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return value;
     }
 
     @Override
