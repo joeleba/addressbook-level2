@@ -31,6 +31,13 @@ public class Address {
         if (!isValidAddress(address)) {
             throw new IllegalValueException(MESSAGE_ADDRESS_CONSTRAINTS);
         }
+        String[] parsedAddress = parseAddress(address);
+        
+        this.block = new Block(parsedAddress[0]);
+        this.street = new Street(parsedAddress[1]);
+        this.unit = new Unit(parsedAddress[2]);
+        this.postalCode = new PostalCode(parsedAddress[3]);
+        
         this.value = address;
     }
 
