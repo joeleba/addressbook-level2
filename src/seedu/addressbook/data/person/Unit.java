@@ -1,5 +1,7 @@
 package seedu.addressbook.data.person;
 
-public class Unit {
-
+public class Unit extends AddressComponent {
+    public Unit(String value) {
+        super(value);
+    }
 }
