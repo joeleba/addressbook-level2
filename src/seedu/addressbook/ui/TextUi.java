@@ -13,15 +13,19 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import static seedu.addressbook.ui.Formatter.LINE_PREFIX;
+import static seedu.addressbook.ui.Formatter.DIVIDER;
+import static seedu.addressbook.ui.Formatter.LS;
 /**
  * Text UI of the application.
  */
 public class TextUi {
     /** Format of a comment input line. Comment lines are silently consumed when reading user input. */
     private static final String COMMENT_LINE_FORMAT_REGEX = "#.*";
-
+    
     private final Scanner in;
     private final PrintStream out;
+    private final Formatter formatter;
 
     public TextUi(){
         this(System.in, System.out);
@@ -30,6 +34,7 @@ public class TextUi {
     public TextUi(InputStream in, PrintStream out) {
         this.in = new Scanner(in);
         this.out = out;
+        this.formatter = new Formatter();
     }
 
     /**
@@ -60,7 +65,7 @@ public class TextUi {
      * @return command (full line) entered by the user
      */
     public String getUserCommand() {
-        out.print(LINE_PREFIX + "Enter command: ");
+        out.print(Formatter.LINE_PREFIX + "Enter command: ");
         String fullInputLine = in.nextLine();
 
         // silently consume all ignored lines
@@ -127,9 +132,7 @@ public class TextUi {
 
     /** Shows a list of strings to the user, formatted as an indexed list. */
     private void showToUserAsIndexedList(List<String> list) {
-        showToUser(getIndexedListForViewing(list));
-    }
-
+        showToUser(formatter.getIndexedListForViewing(list));
     }
 
 }
