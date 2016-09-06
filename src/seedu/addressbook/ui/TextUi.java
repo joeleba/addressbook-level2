@@ -4,6 +4,7 @@ import static seedu.addressbook.common.Messages.*;
 
 import seedu.addressbook.commands.CommandResult;
 import seedu.addressbook.common.Utils;
+import seedu.addressbook.data.person.Printable;
 import seedu.addressbook.data.person.ReadOnlyPerson;
 
 import java.io.InputStream;
@@ -129,6 +130,17 @@ public class TextUi {
         showToUser(result.feedbackToUser, DIVIDER);
     }
 
+    /**
+     * Returns a concatenated version of the printable strings of each object.
+     */
+    public String getPrintableString(Printable... printables){
+        ArrayList<String> stringArray = new ArrayList<>();
+        for (int i = 0; i < printables.length; i++) {
+            stringArray.add(printables[i].getPrintableString());
+        }
+        return String.join("", stringArray);
+    }
+    
     /**
      * Shows a list of persons to the user, formatted as an indexed list.
      * Private contact details are hidden.
