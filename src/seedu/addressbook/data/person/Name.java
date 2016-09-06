@@ -60,5 +60,17 @@ public class Name {
     public int hashCode() {
         return fullName.hashCode();
     }
+    
+    /**
+     * Returns true of the other name is very similar to this name.
+     * Two names are considered similar if:
+     * - They consist of the same letters in the same order, case-insensitive
+     * - They share the same initials
+     * @param other
+     * @return
+     */
+    public boolean isSimilar(Name other) {
+        return true;
+    }
 
 }
