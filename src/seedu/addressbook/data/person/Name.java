@@ -67,10 +67,47 @@ public class Name {
      * - They consist of the same letters in the same order, case-insensitive
      * - They share the same initials
      * @param other
-     * @return
      */
     public boolean isSimilar(Name other) {
-        return true;
+        if (other == null) {
+            return false;
+        }
+        return isSameInitials(other) || isSimilarCaseInsensitive(other);
+    }
+    
+    /**
+     * Compare current name with other name, case-insensitive
+     * @param other
+     */
+    private boolean isSimilarCaseInsensitive(Name other) {
+        return this.fullName.equalsIgnoreCase(other.fullName);
+    }
+    
+    /**
+     * Return true if the current name and other name share the same initials
+     * @param other
+     */
+    private boolean isSameInitials(Name other) {
+        char[] ownNameInitials = getInitials(this.fullName);
+        char[] otherNameInitials = getInitials(other.fullName);
+        
+        return Arrays.equals(ownNameInitials, otherNameInitials);
+    }
+    
+    /**
+     * Return the initials of the input name (in uppercase)
+     * @param nameString
+     * @return
+     */
+    private char[] getInitials(String nameString) {
+        String[] splitted = nameString.split(" ");
+        char[] result = new char[splitted.length];
+        
+        for (int i = 0; i < splitted.length; i++) {
+            char firstChar = splitted[i].toCharArray()[0];
+            result[i] = firstChar;
+        }
+        return result;
     }
 
 }
